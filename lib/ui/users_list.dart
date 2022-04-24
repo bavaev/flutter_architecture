@@ -6,14 +6,14 @@ import 'package:get_it/get_it.dart';
 import 'package:test_app/business/user.dart';
 import 'package:test_app/data/database.dart';
 
-class UserList extends StatefulWidget {
-  const UserList({Key? key}) : super(key: key);
+class UsersList extends StatefulWidget {
+  const UsersList({Key? key}) : super(key: key);
 
   @override
-  State<UserList> createState() => _UserListState();
+  State<UsersList> createState() => _UsersListState();
 }
 
-class _UserListState extends State<UserList> {
+class _UsersListState extends State<UsersList> {
   User? user;
 
   DataBase get data => GetIt.I.get<DataBase>();
@@ -22,22 +22,22 @@ class _UserListState extends State<UserList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User List'),
+        title: const Text('Users List'),
       ),
       body: FutureBuilder(
         future: data.loadData(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<dynamic> data = jsonDecode(snapshot.data.toString());
-
             return ListView.builder(
               itemCount: data.length,
               itemBuilder: (snapshot, index) {
-                return Text(data[index]['lastName']);
+                return ListTile(
+                  title: Text('${data[index]['lastName']} ${data[index]['firstName']} - ${data[index]['age']} лет'),
+                );
               },
             );
           }
-
           return const Center(
             child: CircularProgressIndicator(),
           );

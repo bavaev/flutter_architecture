@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import 'package:test_app/ui/user_list.dart';
+import 'package:test_app/ui/users_list.dart';
 import 'package:test_app/data/database.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: UserList(),
+      home: const UsersList(),
     );
   }
 }

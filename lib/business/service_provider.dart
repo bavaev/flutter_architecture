@@ -7,7 +7,7 @@ class ServiceProvider {
 
   static final instance = DataBase();
 
-  void initialize() {
+  void initialize() async {
     _getIt.registerLazySingleton(() => DataBase());
   }
 }
